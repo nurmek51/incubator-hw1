@@ -1,18 +1,42 @@
 import { useState, useEffect, createContext, useContext } from 'react'
 import './App.css'
 
+// Создаем контекст для темы
 const ThemeContext = createContext()
 
 function App() {
+  // Состояние темы и функция для её изменения
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light')
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
   return (
-    <div className="app-root" style={{ fontFamily: 'Roboto, sans-serif' }}>
-      <header className="app-header">
-        <h1>Welcome brat</h1>
-      </header>
-      <main>
-        <p></p>
-        <TimerApp />
-      </main>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div className={`app-root ${theme}`} style={{ fontFamily: 'Roboto, sans-serif' }}>
+        <header className="app-header">
+          <h1>Welcome brat</h1>
+        </header>
+        <main>
+          <p></p>
+          <TimerApp />
+        </main>
+      </div>
+    </ThemeContext.Provider>
+  )
+}
+
+function ThemeToggle() {
+  const { theme, setTheme } = useContext(ThemeContext)
+  return (
+    <div className="theme-toggle">
+      <button
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        className="theme-btn"
+      >
+        {theme === 'light' ? 'Темная тема' : 'Светлая тема'}
+      </button>
     </div>
   )
 }
@@ -105,6 +129,7 @@ function TimerApp() {
 
   return (
     <div className="timer-container">
+      <ThemeToggle />
       <h1>Таймер мотивации</h1>
 
       {completedCount > 0 && (

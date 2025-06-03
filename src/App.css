@@ -13,6 +13,44 @@ html, body, #root {
   color: #222;
 }
 
+.app-root.dark {
+  background: #181818;
+  color: #f5f5f5;
+}
+
+.app-root.dark .timer-container {
+  background: #232323;
+  border-color: #f5f5f5;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+
+.app-root.dark .name-input,
+.app-root.dark .time-selector select {
+  background: #232323;
+  color: #f5f5f5;
+  border-color: #f5f5f5;
+}
+
+.app-root.dark .progress-bar {
+  background: #333;
+  border-color: #f5f5f5;
+}
+
+.app-root.dark .progress-fill {
+  background-color: #f5f5f5;
+}
+
+.app-root.dark button {
+  background: #232323;
+  color: #f5f5f5;
+  border-color: #f5f5f5;
+}
+
+.app-root.dark .stats {
+  background: #232323;
+  border-color: #f5f5f5;
+}
+
 .app-header {
   margin-bottom: 24px;
 }
