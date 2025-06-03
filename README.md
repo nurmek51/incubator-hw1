@@ -1,4 +1,4 @@
-# Check it here: https://hw1-incubator.vercel.app/
+# Check it here: https://incubator-hw1.vercel.app/
 
 # React + Vite
 
